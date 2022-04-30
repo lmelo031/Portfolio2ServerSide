@@ -42,4 +42,36 @@ function contactTable(){
     }
 }
 
-?>
+     function updateTable() {
+        global $connection;
+
+    if(isset($_POST["first_name"]) &&
+       isset($_POST["last_name"]) &&
+       isset($_POST["email"]) &&
+       isset($_POST["phone_number"])) {
+
+        $firstName = htmlspecialchars($_POST["first_name"]);
+        $lastName = htmlspecialchars($_POST["last_name"]);
+        $state = htmlspecialchars($_POST["email"]);
+        $city = htmlspecialchars($_POST["phone_number"]);
+        
+
+        
+        if($connection != null) {
+            $results = mysqli_query($connection, "INSERT INTO customers ( first_name, last_name, email, phone_number) VALUES( '{$firstName}', '{$lastName}', '{$email}', '{$phoneNumber}')");
+        }
+    }
+}
+    
+        function close() {
+            global $connection;
+            
+            if($connection != null) {
+                mysqli_close($connection);
+            }
+        } 
+    
+    
+    ?>
+    
+                
